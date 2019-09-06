@@ -14,6 +14,7 @@ Just copy all your fonts you want to patch into `$(pwd)/in` directory and execut
 docker run --rm \
     --volume $(pwd)/in:/nerd-fonts/in \
     --volume $(pwd)/out:/nerd-fonts/out \
+    --user $(id -u):$(id -g) \
     cdalvaro/nerd-fonts-patcher:2.0.0 \
     --quiet --no-progressbars \
     --mono --adjust-line-height --complete --careful
