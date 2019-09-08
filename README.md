@@ -1,4 +1,4 @@
-# Nerd Fonts Patcher v2.0.0
+# Nerd Fonts Patcher v2.0.0_1
 
 Dockerfile to build a Nerd Fonts Patcher image for the Docker opensource container platform.
 
@@ -21,7 +21,7 @@ docker run --rm \
     --volume $(pwd)/in:/nerd-fonts/in:ro \
     --volume $(pwd)/out:/nerd-fonts/out \
     --user $(id -u):$(id -g) \
-    cdalvaro/nerd-fonts-patcher:2.0.0 \
+    cdalvaro/nerd-fonts-patcher:2.0.0_1 \
     --quiet --no-progressbars \
     --mono --adjust-line-height --complete --careful
 ```
