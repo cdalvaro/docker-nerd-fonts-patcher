@@ -16,7 +16,7 @@ release: build
 
 patch:
 	@docker run --rm \
-		--volume $(shell pwd)/in:/nerd-fonts/in \
+		--volume $(shell pwd)/in:/nerd-fonts/in:ro \
     	--volume $(shell pwd)/out:/nerd-fonts/out \
 		--user $(shell id -u):$(shell id -g) \
     	cdalvaro/nerd-fonts-patcher:latest \

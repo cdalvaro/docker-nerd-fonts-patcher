@@ -12,7 +12,7 @@ Just copy all your fonts you want to patch into `$(pwd)/in` directory and execut
 
 ```sh
 docker run --rm \
-    --volume $(pwd)/in:/nerd-fonts/in \
+    --volume $(pwd)/in:/nerd-fonts/in:ro \
     --volume $(pwd)/out:/nerd-fonts/out \
     --user $(id -u):$(id -g) \
     cdalvaro/nerd-fonts-patcher:2.0.0 \
