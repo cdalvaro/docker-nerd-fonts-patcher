@@ -3,7 +3,7 @@
 set -e
 
 # Install libspiro
-git clone --depth 1 https://github.com/fontforge/libspiro.git && \
+git clone --branch "${LIBSPIRO_VERSION}" --depth 1 https://github.com/fontforge/libspiro.git && \
     cd libspiro && \
     autoreconf -i && \
     automake --foreign -Wall && \
