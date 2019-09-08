@@ -2,22 +2,59 @@
 
 set -e
 
-options="$@"
-# TODO: Parse options in order to remove -out --outputdir
-# TODO: If -v, --version or -h, --help is asked launch only once and exit
+# Auxliar functions
+RESET='\033[0m'
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
 
-# Get fonts available in directory ${INPUT_DIR}/
-fonts=( $(find ${INPUT_DIR}/ -iregex '.*\.\(otf\|ttf\)$' 2>/dev/null) )
+function log_info() {
+    echo -e "${GREEN}Info${RESET}: $@"
+}
+
+function log_warn() {
+    echo -e "${YELLOW}Warning${RESET}: $@"
+}
+
+function log_error() {
+    (>&2 echo -e "${RED}Error${RESET}: $@")
+}
+
+# Validate arguments
+options=()
+while [[ $# -gt 0 ]]; do
+    param="$1"; shift
+    case "$param" in
+        -h|--help)
+        exec fontforge -script font-patcher --help ;;
+        -v|--version)
+        exec fontforge -script font-patcher --version ;;
+        -out|--outputdir)
+        log_warn "Output directory cannot be modified. Default is: ${CYAN}${OUTPUT_DIR}/${RESET}" ;;
+        *)
+        options+=("$param") ;;
+    esac
+done
+
+# Check whether output directory exists
+if [[ ! -d ${OUTPUT_DIR} ]]; then
+    log_error "Directory ${CYAN}${OUTPUT_DIR}/${RESET} does not exists. You must create an output volume like this: ${CYAN}"'--volume $(pwd)/out:'"${OUTPUT_DIR}${RESET}"
+    exit 1
+fi
+
+# Get fonts available in the input directory
+fonts=( $(find ${INPUT_DIR}/ -type f -iregex '.*\.\(otf\|ttf\)$' 2>/dev/null) )
 
 # Check whether there are fonts to patch
 if [ ${#fonts[@]} -eq 0 ]; then
-    (2> echo -e "\e[1;31mError\e[0m: There are no \e[0;32m.otf\e[0m neither \e[0;32m.ttf\e[0m fonts inside \e[0;33m${INPUT_DIR}/\e[0m directory")
+    log_error "There are no ${CYAN}.otf${RESET} neither ${CYAN}.ttf${RESET} fonts inside ${CYAN}${INPUT_DIR}/${RESET} directory"
     exit 1
 fi
 
 # Patch fonts
 for font in "${fonts[@]}"; do
-    echo -e "\e[0;33m==>\e[0m \e[0;33mPatching font\e[0m \e[0;32m${font}\e[0m ..."
+    log_info "Patching font ${CYAN}${font}${RESET} ..."
     fontforge -script font-patcher -out ${OUTPUT_DIR}/ ${options[@]} "${font}"
 done
 
