@@ -31,7 +31,8 @@ while [[ $# -gt 0 ]]; do
         -v|--version)
         exec fontforge -script font-patcher --version ;;
         -out|--outputdir)
-        log_warn "Output directory cannot be modified. Default is: ${CYAN}${OUTPUT_DIR}/${RESET}" ;;
+        log_warn "Output directory cannot be modified. Default is: ${CYAN}${OUTPUT_DIR}/${RESET}"
+        shift ;;
         *)
         options+=("$param") ;;
     esac
