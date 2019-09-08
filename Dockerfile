@@ -17,8 +17,6 @@ ENV INPUT_DIR=${NERDFONTS_DIR}/in \
     OUTPUT_DIR=${NERDFONTS_DIR}/out \
     REPOSITORY_DIR=${NERDFONTS_DIR}/repo
 
-RUN mkdir -p ${OUTPUT_DIR}
-
 # Install packages
 RUN apt-get update \
  && apt-get install --yes --quiet --no-install-recommends \
