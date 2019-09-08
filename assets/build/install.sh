@@ -12,7 +12,7 @@ git clone --branch "${LIBSPIRO_VERSION}" --depth 1 https://github.com/fontforge/
     cd ..
 
 # Install libuninameslist
-git clone --depth 1 https://github.com/fontforge/libuninameslist.git && \
+git clone --branch "${LIBUNINAMESLIST_VERSION}" --depth 1 https://github.com/fontforge/libuninameslist.git && \
     cd libuninameslist && \
     autoreconf -i && \
     automake --foreign && \
