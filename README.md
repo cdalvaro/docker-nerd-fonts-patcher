@@ -6,7 +6,11 @@ Dockerfile to build a Nerd Fonts Patcher image for the Docker opensource contain
 Specifically to add a high number of extra glyphs from popular 'iconic fonts' such as
 [Font Awesome ➶][font-awesome], [Devicons ➶][vorillaz-devicons] and [Octicons ➶][octicons].
 
-[![Cover Image][cover-image]][repo-github]
+<p align="center">
+  <a href="https://github.com/ryanoasis/nerd-fonts">
+    <img src="https://www.nerdfonts.com/assets/img/sankey-glyphs-combined-diagram.png" alt="Nerd Fonts Sankey Diagram">
+  </a>
+</p>
 
 ## Patch Your Own Font
 
@@ -31,5 +35,3 @@ More information is available at the [official documentation][patch-your-own-fon
 [font-awesome]:https://github.com/FortAwesome/Font-Awesome
 [octicons]:https://github.com/primer/octicons
 [patch-your-own-font]:https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md#option-8-patch-your-own-font
-[cover-image]:https://www.nerdfonts.com/assets/img/sankey-glyphs-combined-diagram.png
-[repo-github]:https://github.com/ryanoasis/nerd-fonts
