@@ -31,6 +31,20 @@ leave them into `$(pwd)/out`.
 
 More information is available at the [official documentation][patch-your-own-font] site.
 
+## Available Sources
+
+This image can be downloaded from [Dockerhub](https://hub.docker.com/r/cdalvaro/nerd-fonts-patcher/)
+
+```sh
+docker pull cdalvaro/nerd-fonts-patcher:latest
+```
+
+or from [Quay.io](https://quay.io/repository/cdalvaro/nerd-fonts-patcher) too.
+
+```sh
+docker pull quay.io/cdalvaro/nerd-fonts-patcher
+```
+
 [vorillaz-devicons]:https://vorillaz.github.io/devicons/
 [font-awesome]:https://github.com/FortAwesome/Font-Awesome
 [octicons]:https://github.com/primer/octicons
