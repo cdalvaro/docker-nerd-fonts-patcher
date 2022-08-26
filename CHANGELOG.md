@@ -2,6 +2,10 @@
 
 The following list only reflects changes made on this project. Please, refer to the Nerd Fonts [Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
 
+**2.2.0**
+
+* CI: Replace CircleCI with GitHub Actions
+
 **2.1.0**
 
 * Upgrade Nerd Fonts to `2.1.0`
