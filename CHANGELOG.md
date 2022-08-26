@@ -4,6 +4,7 @@ The following list only reflects changes made on this project. Please, refer to 
 
 **2.2.0**
 
+* Change Docker base image to `ubuntu:jammy-20220801`
 * CI: Replace CircleCI with GitHub Actions
 
 **2.1.0**
