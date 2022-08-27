@@ -4,8 +4,8 @@ set -e
 
 export DEBIAN_FRONTEND=noninteractive
 
-# shellcheck source=assets/build/functions.sh
 FUNCTIONS_FILE="${BUILD_DIR}/functions.sh"
+# shellcheck source=assets/build/functions.sh
 source "${FUNCTIONS_FILE}"
 
 log_info "Installing required packages and build dependencies ..."

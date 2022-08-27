@@ -101,7 +101,8 @@ function check_sha256() {
   if echo "${SHA256}  ${FILE}" | shasum -a 256 -c --status -; then
     log_debug "SHA256 hash for ${FILE} matches! (${SHA256})"
   else
-    local HASH=$(shasum -a 256 "${FILE}" | awk '{print $1}')
+    local HASH
+    HASH=$(shasum -a 256 "${FILE}" | awk '{print $1}')
     log_error "SHA256 checksum mismatch for ${FILE}"
     log_error "Expected: ${SHA256}"
     log_error "     Got: ${HASH}"
@@ -133,7 +134,7 @@ function build_and_install() {
     -DCMAKE_BUILD_TYPE=Release
   )
 
-  CMAKE_ARGS+=($@)
+  CMAKE_ARGS+=("$@")
 
   CMAKE_BUILD_DIR="cmake-build-release"
   mkdir -p "${CMAKE_BUILD_DIR}"
