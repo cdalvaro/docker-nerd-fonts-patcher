@@ -1,6 +1,6 @@
 # Changelog
 
-The following list only reflects changes made on this project. Please, refer to the Nerd Fonts [Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
+The following list only reflects changes made on this project. Please, refer to the [Nerd Fonts 2.2.0 Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
 
 **2.2.0**
 
