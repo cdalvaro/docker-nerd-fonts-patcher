@@ -13,7 +13,7 @@ REQUIRED_PACKAGES=(
   libpng16-16 zlib1g libtiff5 libjpeg8 libxml2 libspiro1 libgif7 \
   libiconv-hook1 libfreetype6 libcairo2 libpango1.0-0 libwoff1 \
   libuninameslist1 libreadline8 libpython3.10 python3 unifont \
-  python3-setuptools
+  python3-setuptools python3-pip
 )
 
 BUILD_DEPENDENCIES=(
@@ -31,6 +31,9 @@ install_pkgs "${REQUIRED_PACKAGES[@]}" "${BUILD_DEPENDENCIES[@]}"
 FONTFORGE_VERSION="20220308"
 FONTFORGE_SHA256="58bbc759eb102263be835e6c006b1c16b508ba3d0252acd5389062826764f7a5"
 install_fontforge "${FONTFORGE_VERSION}" "${FONTFORGE_SHA256}"
+
+# Install fonttools
+pip3 install fonttools
 
 # Download nerd-fonts
 NERDFONTS_SHA256="55a1f872582914fe2e2c8ff02c42cc4a02f5add8ce94119d21d3ff1c0cafea8c"

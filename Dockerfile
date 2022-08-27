@@ -20,18 +20,19 @@ COPY assets/build/ ${BUILD_DIR}
 WORKDIR ${BUILD_DIR}
 RUN bash ${BUILD_DIR}/install.sh
 
-LABEL \
-    maintainer="github@cdalvaro.io" \
-    org.label-schema.vendor=cdalvaro \
-    org.label-schema.name="Nerd Fonts Patcher" \
-    org.label-schema.version=${IMAGE_VERSION} \
-    org.label-schema.description="Dockerized Nerd Fonts Patcher" \
-    org.label-schema.url="https://github.com/cdalvaro/docker-nerd-fonts-patcher" \
-    org.label-schema.vcs-url="https://github.com/cdalvaro/docker-nerd-fonts-patcher.git" \
-    org.label-schema.vcs-ref=${VCS_REF} \
-    org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.docker.schema-version="1.0" \
-    com.cdalvaro.saltstack-master.license=MIT
+LABEL org.opencontainers.image.title="Dockerized Nerd Fonts Patcher"
+LABEL org.opencontainers.image.description="Nerd Fonts ${NERDFONTS_VERSION} containerized"
+LABEL org.opencontainers.image.documentation="https://github.com/cdalvaro/docker-nerd-fonts-patcher/blob/${IMAGE_VERSION}/README.md"
+LABEL org.opencontainers.image.url="https://github.com/cdalvaro/docker-nerd-fonts-patcher"
+LABEL org.opencontainers.image.source="https://github.com/cdalvaro/docker-nerd-fonts-patcher.git"
+LABEL org.opencontainers.image.authors="Carlos Álvaro <github@cdalvaro.io>"
+LABEL org.opencontainers.image.vendor="cdalvaro"
+LABEL org.opencontainers.image.created="${BUILD_DATE}"
+LABEL org.opencontainers.image.version="${IMAGE_VERSION}"
+LABEL org.opencontainers.image.revision="${VCS_REF}"
+LABEL org.opencontainers.image.base.name="ubuntu:jammy-20220801"
+LABEL org.opencontainers.image.base.digest="sha256:42ba2dfce475de1113d55602d40af18415897167d47c2045ec7b6d9746ff148f"
+LABEL org.opencontainers.image.licenses="MIT"
 
 # Entrypoint
 COPY entrypoint.sh /sbin/entrypoint.sh
