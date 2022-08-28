@@ -1,13 +1,7 @@
-name: Build and publish Docker image
+name: Publish Docker image
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - './**/*.md'
-      - 'LICENSE'
-  pull_request:
     branches:
       - main
     paths-ignore:
@@ -73,8 +67,8 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "${GITHUB_CONTEXT}"
 
-  publish:
-    name: Publish
+  build-publish:
+    name: Build and publish
     runs-on: ubuntu-latest
     needs: metadata
     if: contains(toJSON(github.event.commits.*.message), 'ci(debug)') == false
@@ -98,14 +92,12 @@ jobs:
 
       - name: Login to Docker Container Registry
         uses: docker/login-action@v2
-        if: github.event_name != 'pull_request'
         with:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
-        if: github.event_name != 'pull_request'
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -113,7 +105,6 @@ jobs:
 
       - name: Login to Quay.io Container Registry
         uses: docker/login-action@v2
-        if: github.event_name != 'pull_request'
         with:
           registry: quay.io
           username: ${{ secrets.QUAYIO_USERNAME }}
@@ -126,7 +117,7 @@ jobs:
           build-args: |
             VCS_REF=${{ needs.metadata.outputs.vcs_ref }}
             BUILD_DATE=${{ needs.metadata.outputs.created_on }}
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ needs.metadata.outputs.tags }}
           cache-from: type=local,src=${{ env.CACHE_PATH }}
           cache-to: type=local,dest=${{ env.CACHE_PATH }}
+          push: true
+          tags: ${{ needs.metadata.outputs.tags }}
