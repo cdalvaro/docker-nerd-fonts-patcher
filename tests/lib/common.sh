@@ -156,5 +156,9 @@ ${message}
 EOF
 )
 
-  [[ "${current}" == "${expected}" ]] && ok "${output}" || error "${output}"
+  if [[ "${current}" == "${expected}" ]]; then
+    ok "${output}"
+  else
+    error "${output}"
+  fi
 }
