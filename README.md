@@ -1,4 +1,4 @@
-# Nerd Fonts Patcher v2.1.0
+# Nerd Fonts Patcher v2.2.0
 
 Dockerfile to build a Nerd Fonts Patcher image for the Docker opensource container platform.
 
@@ -18,10 +18,10 @@ Just copy all your fonts you want to patch into `$(pwd)/in` directory and execut
 
 ```sh
 docker run --rm \
-    --volume $(pwd)/in:/nerd-fonts/in:ro \
+    --volume $(pwd)/in:/nerd-fonts/in \
     --volume $(pwd)/out:/nerd-fonts/out \
     --user $(id -u):$(id -g) \
-    cdalvaro/nerd-fonts-patcher:2.1.0 \
+    ghcr.io/cdalvaro/docker-nerd-fonts-patcher:latest \
     --quiet --no-progressbars \
     --mono --adjust-line-height --complete --careful
 ```
@@ -33,16 +33,22 @@ More information is available at the [official documentation][patch-your-own-fon
 
 ## Available Sources
 
-This image can be downloaded from [Dockerhub](https://hub.docker.com/r/cdalvaro/nerd-fonts-patcher/)
+This image can be downloaded from [Dockerhub](https://hub.docker.com/r/cdalvaro/docker-nerd-fonts-patcher/)
 
 ```sh
-docker pull cdalvaro/nerd-fonts-patcher:latest
+docker pull cdalvaro/docker-nerd-fonts-patcher:latest
 ```
 
-or from [Quay.io](https://quay.io/repository/cdalvaro/nerd-fonts-patcher) too.
+from [Quay.io](https://quay.io/repository/cdalvaro/docker-nerd-fonts-patcher) too.
 
 ```sh
-docker pull quay.io/cdalvaro/nerd-fonts-patcher
+docker pull quay.io/cdalvaro/docker-nerd-fonts-patcher
+```
+
+or from [GitHub Container Registry](https://ghcr.io/cdalvaro/docker-nerd-fonts-patcher) too.
+
+```sh
+docker pull ghcr.io/cdalvaro/docker-nerd-fonts-patcher
 ```
 
 [vorillaz-devicons]:https://vorillaz.github.io/devicons/
