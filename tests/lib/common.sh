@@ -162,3 +162,19 @@ EOF
     error "${output}"
   fi
 }
+
+#---  FUNCTION  -------------------------------------------------------------------------------------------------------
+#          NAME:  patch_fonts
+#   DESCRIPTION:  Patch the fonts inside INPUT_DIR ($1) and leave the output inside OUTPUT_DIR ($2).
+#----------------------------------------------------------------------------------------------------------------------
+function patch_fonts()
+{
+  local INPUT_DIR="${1}"; shift
+  local OUTPUT_DIR="${1}"; shift
+
+  docker run --rm \
+		--volume "${INPUT_DIR}/":/nerd-fonts/in \
+    --volume "${OUTPUT_DIR}/":/nerd-fonts/out \
+		--user "$(id -u)":"$(id -g)" -- "${IMAGE_NAME}" \
+    --quiet --no-progressbars "$@"
+}

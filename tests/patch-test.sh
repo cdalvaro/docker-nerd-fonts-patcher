@@ -8,6 +8,19 @@ COMMON_FILE="${SCRIPT_PATH}/lib/common.sh"
 
 # shellcheck source=tests/lib/common.sh
 source "${COMMON_FILE}"
+[ "$(lowercase "${DEBUG}")" == true ] && set -vx
+
+log_info "🧪 Running patch tests ..."
+
+### GIVEN
+FIRACODE_VERSION="6.2"
+FIRACODE_SHA256="0949915ba8eb24d89fd93d10a7ff623f42830d7c5ffc3ecbf960e4ecad3e3e79"
+FIRACODE_FILE_NAME="FiraCode.zip"
+FIRACODE_URL="https://github.com/tonsky/FiraCode/releases/download/${FIRACODE_VERSION}/Fira_Code_v${FIRACODE_VERSION}.zip"
+
+FIRACODE_NERD_FONT_SHA256="7ad2fdab3e95405b45644425d74238eb8463f2547ad6ff076bcc383ccba1c9c6"
+FIRACODE_NERD_FONT_FILE_NAME="FiraCodeNerdFont.zip"
+FIRACODE_NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v${NERDFONTS_VERSION}/FiraCode.zip"
 
 NERDFONTS_VERSION="$(cat VERSION)"
 
@@ -18,14 +31,7 @@ pushd "${WORK_DIR}"
 INPUT_DIR="$(pwd)/in"
 OUTPUT_DIR="$(pwd)/out"
 
-[ "$(lowercase "${DEBUG}")" == true ] && set -vx
-log_info "🧪 Running patch tests ..."
-
-FIRACODE_VERSION="6.2"
-FIRACODE_SHA256="0949915ba8eb24d89fd93d10a7ff623f42830d7c5ffc3ecbf960e4ecad3e3e79"
-FIRACODE_FILE_NAME="FiraCode.zip"
-FIRACODE_URL="https://github.com/tonsky/FiraCode/releases/download/${FIRACODE_VERSION}/Fira_Code_v${FIRACODE_VERSION}.zip"
-
+### THEN
 log_info "==> Downloading original Fira Code ${FIRACODE_VERSION} font ..."
 download "${FIRACODE_URL}" "${FIRACODE_FILE_NAME}"
 check_sha256 "${FIRACODE_FILE_NAME}" "${FIRACODE_SHA256}" || error "SHA256 checksum mismatch for ${FIRACODE_URL}"
@@ -36,18 +42,9 @@ mv "${INPUT_DIR}"/ttf/* "${INPUT_DIR}/"
 rmdir "${INPUT_DIR}/ttf"
 
 log_info "==> Patching original Fira Code font ..."
-docker run --rm \
-		--volume "${INPUT_DIR}/":/nerd-fonts/in \
-    --volume "${OUTPUT_DIR}/":/nerd-fonts/out \
-		--user "$(id -u)":"$(id -g)" \
-		-- \
-    cdalvaro/docker-nerd-fonts-patcher:latest \
-      --quiet --no-progressbars --mono --complete
+patch_fonts "${INPUT_DIR}" "${OUTPUT_DIR}" --complete
 
 log_info "==> Downloading patched Fira Code font ..."
-FIRACODE_NERD_FONT_SHA256="7ad2fdab3e95405b45644425d74238eb8463f2547ad6ff076bcc383ccba1c9c6"
-FIRACODE_NERD_FONT_FILE_NAME="FiraCodeNerdFont.zip"
-FIRACODE_NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v${NERDFONTS_VERSION}/FiraCode.zip"
 download "${FIRACODE_NERD_FONT_URL}" "${FIRACODE_NERD_FONT_FILE_NAME}"
 check_sha256 "${FIRACODE_NERD_FONT_FILE_NAME}" "${FIRACODE_NERD_FONT_SHA256}" || error "SHA256 checksum mismatch for ${FIRACODE_NERD_FONT_URL}"
 
