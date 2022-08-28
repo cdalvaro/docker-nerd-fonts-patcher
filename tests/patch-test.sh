@@ -52,9 +52,13 @@ mkdir -p patched/
 unzip -q "${FIRACODE_NERD_FONT_FILE_NAME}" -d patched/
 
 while IFS='' read -r FONT; do
-  output_ttx="$(ttx -o "${INPUT_DIR}/${FONT}")"
-  patched_ttx="$(ttx -o "$(pwd)/patched/${FONT}")"
-  check_equal "${output_ttx}" "${patched_ttx}" "ttx output matches for font ${FONT}"
+  ttx -o custom_patched_font.xml "${INPUT_DIR}/${FONT}"
+  cat custom_patched_font.xml
+
+  ttx -o nerdfonts_patched_font.xml "$(pwd)/patched/${FONT}"
+  cat nerdfonts_patched_font.xml
+
+  diff custom_patched_font.xml nerdfonts_patched_font.xml
 done < <(find "${OUTPUT_DIR}" -type f -iname '*.ttf' -exec basename {} \; 2>/dev/null)
 
 popd
