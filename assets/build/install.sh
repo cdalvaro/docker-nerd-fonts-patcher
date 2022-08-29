@@ -33,7 +33,6 @@ FONTFORGE_SHA256="58bbc759eb102263be835e6c006b1c16b508ba3d0252acd5389062826764f7
 install_fontforge "${FONTFORGE_VERSION}" "${FONTFORGE_SHA256}"
 
 # Download nerd-fonts
-NERDFONTS_SHA256="55a1f872582914fe2e2c8ff02c42cc4a02f5add8ce94119d21d3ff1c0cafea8c"
 NERDFONTS_URL="https://github.com/ryanoasis/nerd-fonts/archive/refs/tags/${NERDFONTS_VERSION}.tar.gz"
 NERDFONTS_FILE_NAME="nerd-fonts.tar.gz"
 download "${NERDFONTS_URL}" "${NERDFONTS_FILE_NAME}" --progress=bar --show-progress
