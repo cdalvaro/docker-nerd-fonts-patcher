@@ -17,10 +17,10 @@ release: build
 
 patch:
 	@docker run --rm \
-		--volume $(shell pwd)/in:/nerd-fonts/in:ro \
+		--volume $(shell pwd)/in:/nerd-fonts/in \
     --volume $(shell pwd)/out:/nerd-fonts/out \
 		--user $(shell id -u):$(shell id -g) \
 		-- \
     cdalvaro/docker-nerd-fonts-patcher:latest \
 		  --quiet --no-progressbars \
-		  --mono --adjust-line-height --complete --careful
+		  --complete --careful
