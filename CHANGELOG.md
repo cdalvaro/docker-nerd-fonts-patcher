@@ -5,6 +5,7 @@ The following list only reflects changes made on this project. Please, refer to 
 **2.3.0**
 
 * Upgrade Nerd Fonts to `2.3.0`
+* Upgrade Font Forge to `20230101`
 * Change Docker base image to `ubuntu:jammy-20221130`
 
 **2.2.2**
