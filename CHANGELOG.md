@@ -1,6 +1,10 @@
 # Changelog
 
-The following list only reflects changes made on this project. Please, refer to the [Nerd Fonts 2.3.0 Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
+The following list only reflects changes made on this project. Please, refer to the [Nerd Fonts 2.3.1 Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
+
+**2.3.1**
+
+* Upgrade Nerd Fonts to `2.3.1`
 
 **2.3.0**
 
