@@ -7,7 +7,7 @@
 [![Architecture ARM64][arch_arm64_badge]][arch_link]
 [![Architecture ARM/v7][arch_arm_badge]][arch_link]
 
-# Dockerized Nerd Fonts Patcher v2.2.2
+# Dockerized Nerd Fonts Patcher v2.3.0
 
 Dockerfile to build a Nerd Fonts Patcher image for the Docker opensource container platform.
 
@@ -61,17 +61,17 @@ or from [GitHub Container Registry](https://ghcr.io/cdalvaro/docker-nerd-fonts-p
 docker pull ghcr.io/cdalvaro/docker-nerd-fonts-patcher
 ```
 
-[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v2.2.2-lightgrey.svg
+[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v2.3.0-lightgrey.svg
 
-[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v2.2.2 "Nerd Fonts Release Notes"
+[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v2.3.0 "Nerd Fonts Release Notes"
 
 [ubuntu_badge]: https://img.shields.io/badge/ubuntu-jammy--20220801-E95420.svg?logo=Ubuntu
 
 [ubuntu_hub_docker]: https://hub.docker.com/_/ubuntu/ "Ubuntu Image"
 
-[github_publish_badge]: https://img.shields.io/github/workflow/status/cdalvaro/docker-nerd-fonts-patcher/Publish%20Docker%20image?label=build&logo=GitHub&logoColor=%23181717
+[github_publish_badge]: https://github.com/cdalvaro/docker-nerd-fonts-patcher/actions/workflows/publish.yml/badge.svg
 
-[github_publish_workflow]: https://github.com/cdalvaro/docker-nerd-fonts-patcher/actions?query=workflow%3A%22Publish+Docker+image%22
+[github_publish_workflow]: https://github.com/cdalvaro/docker-nerd-fonts-patcher/actions/workflows/publish.yml
 
 [docker_size_badge]: https://img.shields.io/docker/image-size/cdalvaro/docker-nerd-fonts-patcher/latest?logo=docker&color=2496ED
 

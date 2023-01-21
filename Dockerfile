@@ -4,8 +4,8 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 # https://github.com/ryanoasis/nerd-fonts/releases
-ENV NERDFONTS_VERSION="v2.2.2" \
-    NERDFONTS_SHA256="f008adbaa575a9ec55947f3a370c9610f281b91ff0b559b173b2702682d9dce8"
+ENV NERDFONTS_VERSION="v2.3.0" \
+    NERDFONTS_SHA256="688d621d2af549c147e268b1258cf30c5f6be62e93f4894a3397b1fb3ae7cb37"
 ENV IMAGE_VERSION="${NERDFONTS_VERSION}"
 
 ENV BUILD_DIR="/build" \
@@ -25,7 +25,7 @@ LABEL org.opencontainers.image.title="Dockerized Nerd Fonts Patcher"
 LABEL org.opencontainers.image.description="Nerd Fonts ${NERDFONTS_VERSION} containerized"
 LABEL org.opencontainers.image.documentation="https://github.com/cdalvaro/docker-nerd-fonts-patcher/blob/${IMAGE_VERSION}/README.md"
 LABEL org.opencontainers.image.url="https://github.com/cdalvaro/docker-nerd-fonts-patcher"
-LABEL org.opencontainers.image.source="https://github.com/cdalvaro/docker-nerd-fonts-patcher.git"
+LABEL org.opencontainers.image.source="https://github.com/cdalvaro/docker-nerd-fonts-patcher"
 LABEL org.opencontainers.image.authors="Carlos Álvaro <github@cdalvaro.io>"
 LABEL org.opencontainers.image.vendor="cdalvaro"
 LABEL org.opencontainers.image.created="${BUILD_DATE}"
