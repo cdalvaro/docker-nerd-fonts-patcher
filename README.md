@@ -65,7 +65,7 @@ docker pull ghcr.io/cdalvaro/docker-nerd-fonts-patcher
 
 [nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v2.3.1 "Nerd Fonts Release Notes"
 
-[ubuntu_badge]: https://img.shields.io/badge/ubuntu-jammy--20221130-E95420.svg?logo=Ubuntu
+[ubuntu_badge]: https://img.shields.io/badge/ubuntu-jammy--20230308-E95420.svg?logo=Ubuntu
 
 [ubuntu_hub_docker]: https://hub.docker.com/_/ubuntu/ "Ubuntu Image"
 
