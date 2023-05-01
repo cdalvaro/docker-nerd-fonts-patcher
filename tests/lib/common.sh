@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC2312
+
 #---  ENV VARIABLE  ---------------------------------------------------------------------------------------------------
 #          NAME:  IMAGE_NAME
 #   DESCRIPTION:  The name and tag of the Docker image. Default: 'cdalvaro/docker-nerd-fonts-patcher:latest'.
@@ -25,7 +27,9 @@ function lowercase() {
 #   DESCRIPTION:  Echo debug information to stdout.
 #----------------------------------------------------------------------------------------------------------------------
 function log_debug() {
-  if [[ $(lowercase "${DEBUG}") == true || $(lowercase "${ECHO_DEBUG}") == true ]]; then
+  ECHO_DEBUG=$(lowercase "${ECHO_DEBUG:-${DEBUG:-false}}")
+
+  if [[ "${ECHO_DEBUG}" == true ]]; then
     echo "[DEBUG] - $*"
   fi
 }
@@ -172,9 +176,10 @@ function patch_fonts()
   local INPUT_DIR="${1}"; shift
   local OUTPUT_DIR="${1}"; shift
 
-  docker run --rm \
-		--volume "${INPUT_DIR}/":/nerd-fonts/in \
-    --volume "${OUTPUT_DIR}/":/nerd-fonts/out \
-		--user "$(id -u)":"$(id -g)" -- "${IMAGE_NAME}" \
+  docker run --rm --platform "${PLATFORM}" \
+    --volume "${INPUT_DIR}/":/input \
+    --volume "${OUTPUT_DIR}/":/output \
+    --env PUID="$(id -u)" --env PGID="$(id -g)" \
+    -- "${IMAGE_NAME}" \
     --quiet --no-progressbars "$@"
 }

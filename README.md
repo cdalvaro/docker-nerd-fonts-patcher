@@ -7,7 +7,7 @@
 [![Architecture ARM64][arch_arm64_badge]][arch_link]
 [![Architecture ARM/v7][arch_arm_badge]][arch_link]
 
-# Dockerized Nerd Fonts Patcher v2.3.1
+# Dockerized Nerd Fonts Patcher v3.0.0
 
 Dockerfile to build a Nerd Fonts Patcher image for the Docker opensource container platform.
 
@@ -28,16 +28,18 @@ Just copy all your fonts you want to patch into `$(pwd)/in` directory and execut
 
 ```sh
 docker run --rm \
-    --volume $(pwd)/in:/nerd-fonts/in \
-    --volume $(pwd)/out:/nerd-fonts/out \
-    --user $(id -u):$(id -g) \
+    --volume "$(pwd)/in":/input \
+    --volume "$(pwd)/out":/output \
+    --env PUID=$(id -u) --env PGID=$(id -g) \
     ghcr.io/cdalvaro/docker-nerd-fonts-patcher:latest \
     --quiet --no-progressbars \
     --mono --adjust-line-height --complete --careful
 ```
 
-The container will patch all files with extensions `.otf` and `.ttf` inside `$(pwd)/in` and
+The container will patch all files with extensions: `.otf`, `.ttf`, `.woff`, `.eot`, `.ttc` inside `$(pwd)/in` and
 leave them into `$(pwd)/out`.
+
+Environment variables `PUID` and `PGID` are used to set the user and group id of the files created by the container.
 
 More information is available at the [official documentation][patch-your-own-font] site.
 
@@ -61,9 +63,9 @@ or from [GitHub Container Registry](https://ghcr.io/cdalvaro/docker-nerd-fonts-p
 docker pull ghcr.io/cdalvaro/docker-nerd-fonts-patcher
 ```
 
-[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v2.3.1-lightgrey.svg
+[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v3.0.0-lightgrey.svg
 
-[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v2.3.1 "Nerd Fonts Release Notes"
+[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.0.0 "Nerd Fonts Release Notes"
 
 [ubuntu_badge]: https://img.shields.io/badge/ubuntu-jammy--20230308-E95420.svg?logo=Ubuntu
 

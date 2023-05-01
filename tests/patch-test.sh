@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC2312
+
 set -e
 
 # https://stackoverflow.com/a/4774063/3398062
@@ -8,18 +10,18 @@ COMMON_FILE="${SCRIPT_PATH}/lib/common.sh"
 
 # shellcheck source=tests/lib/common.sh
 source "${COMMON_FILE}"
-[ "$(lowercase "${DEBUG}")" == true ] && set -vx
+[[ "$(lowercase "${DEBUG:-false}")" == true ]] && set -vx
 
 log_info "🧪 Running patch tests ..."
 
 ### GIVEN
-FIRACODE_VERSION="6"
-FIRACODE_SHA256="a4997c2f905fb20a6d814baf7b9bab7df7de574a8e87d6af509685a43291caf1"
+FIRACODE_VERSION="6.2"
+FIRACODE_SHA256="0949915ba8eb24d89fd93d10a7ff623f42830d7c5ffc3ecbf960e4ecad3e3e79"
 FIRACODE_FILE_NAME="FiraCode.zip"
 FIRACODE_URL="https://github.com/tonsky/FiraCode/releases/download/${FIRACODE_VERSION}/Fira_Code_v${FIRACODE_VERSION}.zip"
 
 NERDFONTS_VERSION="$(cat VERSION)"
-FIRACODE_NERD_FONT_SHA256="9d0018e5a299b582c42d6e3e80cd4f3b0a3489e14e0c8ad126869248fa11c172"
+FIRACODE_NERD_FONT_SHA256="705b7eaa5b687987cc0e65a961314250be0cbdac71e6ae5a8be5c8064361f37c"
 FIRACODE_NERD_FONT_FILE_NAME="FiraCodeNerdFont.zip"
 FIRACODE_NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v${NERDFONTS_VERSION}/FiraCode.zip"
 

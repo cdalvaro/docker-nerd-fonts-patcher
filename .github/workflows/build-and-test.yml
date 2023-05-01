@@ -111,4 +111,6 @@ jobs:
         run: sudo apt update -y && sudo apt install -y python3-fonttools fonttools
 
       - name: Execute tests
+        env:
+          PLATFORM: ${{ matrix.platform }}
         run: bash tests/patch-test.sh

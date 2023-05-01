@@ -4,17 +4,13 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 # https://github.com/ryanoasis/nerd-fonts/releases
-ENV NERDFONTS_VERSION="v2.3.1" \
-    NERDFONTS_SHA256="53f17da9b2c73c4bb4f81a5c8561940618e6808df91f36c8aa9890eb0caabe18"
+ENV NERDFONTS_VERSION="v3.0.0" \
+    NERDFONTS_SHA256="994e953cd69e2fd114ce79af422354b14b95418191365f99e11987c55e487243"
 ENV IMAGE_VERSION="${NERDFONTS_VERSION}"
 
 ENV BUILD_DIR="/build" \
-    NERDFONTS_DIR="/nerd-fonts"
-
-ENV INPUT_DIR="${NERDFONTS_DIR}/in" \
-    OUTPUT_DIR="${NERDFONTS_DIR}/out" \
-    REPOSITORY_DIR="${NERDFONTS_DIR}/repo"
-RUN mkdir -p "${INPUT_DIR}" "${OUTPUT_DIR}" "${REPOSITORY_DIR}"
+    REPOSITORY_DIR="/nerd-fonts/repo"
+RUN mkdir -p "${REPOSITORY_DIR}"
 
 # Install nerd fonts
 COPY assets/build/ ${BUILD_DIR}
@@ -37,9 +33,6 @@ LABEL org.opencontainers.image.licenses="MIT"
 # Entrypoint
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod +x /sbin/entrypoint.sh
-
-# Shared resources
-VOLUME [ "${INPUT_DIR}", "${OUTPUT_DIR}" ]
 
 WORKDIR ${REPOSITORY_DIR}
 ENTRYPOINT ["/sbin/entrypoint.sh"]
