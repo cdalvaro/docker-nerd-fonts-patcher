@@ -5,9 +5,8 @@
 [![Docker Image Size][docker_size_badge]][docker_hub_tags]
 [![Architecture AMD64][arch_amd64_badge]][arch_link]
 [![Architecture ARM64][arch_arm64_badge]][arch_link]
-[![Architecture ARM/v7][arch_arm_badge]][arch_link]
 
-# Dockerized Nerd Fonts Patcher v3.0.0
+# Dockerized Nerd Fonts Patcher v3.1.0
 
 Dockerfile to build a Nerd Fonts Patcher image for the Docker opensource container platform.
 
@@ -63,11 +62,11 @@ or from [GitHub Container Registry](https://ghcr.io/cdalvaro/docker-nerd-fonts-p
 docker pull ghcr.io/cdalvaro/docker-nerd-fonts-patcher
 ```
 
-[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v3.0.0-lightgrey.svg
+[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v3.1.0-lightgrey.svg
 
-[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.0.0 "Nerd Fonts Release Notes"
+[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.1.0 "Nerd Fonts Release Notes"
 
-[ubuntu_badge]: https://img.shields.io/badge/ubuntu-jammy--20230308-E95420.svg?logo=Ubuntu
+[ubuntu_badge]: https://img.shields.io/badge/ubuntu-jammy--20231004-E95420.svg?logo=Ubuntu
 
 [ubuntu_hub_docker]: https://hub.docker.com/_/ubuntu/ "Ubuntu Image"
 
@@ -80,8 +79,6 @@ docker pull ghcr.io/cdalvaro/docker-nerd-fonts-patcher
 [docker_hub_tags]: https://hub.docker.com/repository/docker/cdalvaro/docker-nerd-fonts-patcher/tags
 
 [arch_amd64_badge]: https://img.shields.io/badge/arch-amd64-inactive.svg
-
-[arch_arm_badge]: https://img.shields.io/badge/arch-arm/v7-inactive.svg
 
 [arch_arm64_badge]: https://img.shields.io/badge/arch-arm64-inactive.svg
 
