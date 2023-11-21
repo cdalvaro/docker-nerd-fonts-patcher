@@ -1,11 +1,11 @@
-FROM ubuntu:jammy-20230308
+FROM ubuntu:jammy-20231004
 
 ARG BUILD_DATE
 ARG VCS_REF
 
 # https://github.com/ryanoasis/nerd-fonts/releases
-ENV NERDFONTS_VERSION="v3.0.0" \
-    NERDFONTS_SHA256="994e953cd69e2fd114ce79af422354b14b95418191365f99e11987c55e487243"
+ENV NERDFONTS_VERSION="v3.1.0" \
+    NERDFONTS_SHA256="8fa631a6201375bda1cc7b16c35af75a806df83903bc173d5e086c14ec1880e9"
 ENV IMAGE_VERSION="${NERDFONTS_VERSION}"
 
 ENV BUILD_DIR="/build" \
@@ -27,7 +27,7 @@ LABEL org.opencontainers.image.vendor="cdalvaro"
 LABEL org.opencontainers.image.created="${BUILD_DATE}"
 LABEL org.opencontainers.image.version="${IMAGE_VERSION}"
 LABEL org.opencontainers.image.revision="${VCS_REF}"
-LABEL org.opencontainers.image.base.name="ubuntu:jammy-20230308"
+LABEL org.opencontainers.image.base.name="ubuntu:jammy-20231004"
 LABEL org.opencontainers.image.licenses="MIT"
 
 # Entrypoint

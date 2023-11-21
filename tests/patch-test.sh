@@ -21,7 +21,7 @@ FIRACODE_FILE_NAME="FiraCode.zip"
 FIRACODE_URL="https://github.com/tonsky/FiraCode/releases/download/${FIRACODE_VERSION}/Fira_Code_v${FIRACODE_VERSION}.zip"
 
 NERDFONTS_VERSION="$(cat VERSION)"
-FIRACODE_NERD_FONT_SHA256="705b7eaa5b687987cc0e65a961314250be0cbdac71e6ae5a8be5c8064361f37c"
+FIRACODE_NERD_FONT_SHA256="f4289834fc3b276789f0fb17a2693e8c481b5548ac97590677510f0ec5419059"
 FIRACODE_NERD_FONT_FILE_NAME="FiraCodeNerdFont.zip"
 FIRACODE_NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v${NERDFONTS_VERSION}/FiraCode.zip"
 

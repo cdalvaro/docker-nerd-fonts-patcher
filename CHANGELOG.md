@@ -1,6 +1,12 @@
 # Changelog
 
-The following list only reflects changes made on this project. Please, refer to the [Nerd Fonts 3.0.0 Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
+The following list only reflects changes made on this project. Please, refer to the [Nerd Fonts 3.1.0 Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
+
+**3.1.0**
+
+* Upgrade Nerd Fonts to `3.1.0`
+* Change Docker base image to `ubuntu:jammy-20231004`
+* Drop arm7l architecture support
 
 **3.0.0**
 
