@@ -21,7 +21,7 @@ FIRACODE_FILE_NAME="FiraCode.zip"
 FIRACODE_URL="https://github.com/tonsky/FiraCode/releases/download/${FIRACODE_VERSION}/Fira_Code_v${FIRACODE_VERSION}.zip"
 
 NERDFONTS_VERSION="$(cat VERSION)"
-FIRACODE_NERD_FONT_SHA256="f4289834fc3b276789f0fb17a2693e8c481b5548ac97590677510f0ec5419059"
+FIRACODE_NERD_FONT_SHA256="1ad776cc5c186ff7ba1e2a05eea6701dfa57f7a1763e1db3422979301fb86209"
 FIRACODE_NERD_FONT_FILE_NAME="FiraCodeNerdFont.zip"
 FIRACODE_NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v${NERDFONTS_VERSION}/FiraCode.zip"
 
@@ -58,7 +58,7 @@ while IFS='' read -r FONT; do
   sed -E -i 's/.*<(checkSumAdjustment|modified|FFTimeStamp|sourceModified).*//g' custom_patched_font.ttx
   ttx --recalc-timestamp -o nerdfonts_patched_font.ttx "$(pwd)/patched/${FONT}"
   sed -E -i 's/.*<(checkSumAdjustment|modified|FFTimeStamp|sourceModified).*//g' nerdfonts_patched_font.ttx
-  diff custom_patched_font.ttx nerdfonts_patched_font.ttx
+  diff -u custom_patched_font.ttx nerdfonts_patched_font.ttx
 done < <(find "${OUTPUT_DIR}" -type f -iname '*.ttf' -exec basename {} \; 2>/dev/null)
 
 popd
