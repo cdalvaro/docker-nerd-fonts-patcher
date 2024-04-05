@@ -168,10 +168,10 @@ EOF
 }
 
 #---  FUNCTION  -------------------------------------------------------------------------------------------------------
-#          NAME:  patch_fonts
-#   DESCRIPTION:  Patch the fonts inside INPUT_DIR ($1) and leave the output inside OUTPUT_DIR ($2).
+#          NAME:  font_patcher
+#   DESCRIPTION:  Run font-patcher with given options.
 #----------------------------------------------------------------------------------------------------------------------
-function patch_fonts()
+function font_patcher()
 {
   local INPUT_DIR="${1}"; shift
   local OUTPUT_DIR="${1}"; shift
@@ -180,6 +180,5 @@ function patch_fonts()
     --volume "${INPUT_DIR}/":/input \
     --volume "${OUTPUT_DIR}/":/output \
     --env PUID="$(id -u)" --env PGID="$(id -g)" \
-    -- "${IMAGE_NAME}" \
-    --quiet --no-progressbars "$@"
+    -- "${IMAGE_NAME}" "$@"
 }
