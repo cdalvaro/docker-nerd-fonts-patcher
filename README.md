@@ -26,13 +26,18 @@ Specifically to add a high number of extra glyphs from popular 'iconic fonts' su
 Just copy all your fonts you want to patch into `$(pwd)/in` directory and execute the following command:
 
 ```sh
+make patch
+```
+
+If you want to use [additional options](https://github.com/ryanoasis/nerd-fonts/wiki/ScriptOptions), you can use `docker run` to patch your fonts:
+
+```sh
 docker run --rm \
     --volume "$(pwd)/in":/input \
     --volume "$(pwd)/out":/output \
     --env PUID=$(id -u) --env PGID=$(id -g) \
     ghcr.io/cdalvaro/docker-nerd-fonts-patcher:latest \
-    --quiet --no-progressbars \
-    --mono --adjust-line-height --complete --careful
+    --quiet --no-progressbars --complete --careful
 ```
 
 The container will patch all files with extensions: `.otf`, `.ttf`, `.woff`, `.eot`, `.ttc` inside `$(pwd)/in` and
