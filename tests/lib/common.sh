@@ -14,6 +14,18 @@ export IMAGE_NAME=${IMAGE_NAME:-'cdalvaro/docker-nerd-fonts-patcher:latest'}
 #----------------------------------------------------------------------------------------------------------------------
 export PLATFORM=${PLATFORM:-$(docker version --format='{{.Server.Os}}/{{.Server.Arch}}')}
 
+#---  ENV VARIABLE  ---------------------------------------------------------------------------------------------------
+#          NAME:  INPUT_DIR
+#   DESCRIPTION:  The path to the input directory. Default: 'in'.
+#----------------------------------------------------------------------------------------------------------------------
+export INPUT_DIR="${INPUT_DIR:-"$(pwd)/in"}"
+
+#---  ENV VARIABLE  ---------------------------------------------------------------------------------------------------
+#          NAME:  OUTPUT_DIR
+#   DESCRIPTION:  The path to the output directory. Default: 'out'.
+#----------------------------------------------------------------------------------------------------------------------
+export OUTPUT_DIR="${OUTPUT_DIR:-"$(pwd)/out"}"
+
 #---  FUNCTION  -------------------------------------------------------------------------------------------------------
 #          NAME:  lowercase
 #   DESCRIPTION:  Lowercase a string.
@@ -30,7 +42,7 @@ function log_debug() {
   ECHO_DEBUG=$(lowercase "${ECHO_DEBUG:-${DEBUG:-false}}")
 
   if [[ "${ECHO_DEBUG}" == true ]]; then
-    echo "[DEBUG] - $*"
+    echo "🧪 [DEBUG] - $*"
   fi
 }
 
@@ -39,7 +51,7 @@ function log_debug() {
 #   DESCRIPTION:  Echo information to stdout.
 #----------------------------------------------------------------------------------------------------------------------
 function log_info() {
-  echo "[INFO] - $*"
+  echo "ℹ️ [INFO] - $*"
 }
 
 #---  FUNCTION  -------------------------------------------------------------------------------------------------------
@@ -47,7 +59,7 @@ function log_info() {
 #   DESCRIPTION:  Echo warning information to stdout.
 #----------------------------------------------------------------------------------------------------------------------
 function log_warn() {
-  (echo >&2 "[WARN] - $*")
+  (echo >&2 "⚠️ [WARN] - $*")
 }
 
 #---  FUNCTION  -------------------------------------------------------------------------------------------------------
@@ -55,7 +67,7 @@ function log_warn() {
 #   DESCRIPTION:  Echo errors to stderr.
 #----------------------------------------------------------------------------------------------------------------------
 function log_error() {
-  (echo >&2 "[ERROR] - $*")
+  (echo >&2 "❌ [ERROR] - $*")
 }
 
 #---  FUNCTION  -------------------------------------------------------------------------------------------------------
@@ -168,17 +180,53 @@ EOF
 }
 
 #---  FUNCTION  -------------------------------------------------------------------------------------------------------
+#          NAME:  check_regex
+#   DESCRIPTION:  Check if the given value matches the expected regex.
+#----------------------------------------------------------------------------------------------------------------------
+function check_regex()
+{
+  local current="$1"
+  local regex="$2"
+  local message="$3"
+
+  output=$(cat <<EOF
+${message}
+    Regex: ${regex}
+  Current: ${current}
+EOF
+)
+
+  if echo -n "${current}" | grep -qE "${regex}"; then
+    ok "${output}"
+  else
+    error "${output}"
+  fi
+}
+
+#---  FUNCTION  -------------------------------------------------------------------------------------------------------
 #          NAME:  font_patcher
 #   DESCRIPTION:  Run font-patcher with given options.
 #----------------------------------------------------------------------------------------------------------------------
 function font_patcher()
 {
-  local INPUT_DIR="${1}"; shift
-  local OUTPUT_DIR="${1}"; shift
-
   docker run --rm --platform "${PLATFORM}" \
     --volume "${INPUT_DIR}/":/input \
     --volume "${OUTPUT_DIR}/":/output \
     --env PUID="$(id -u)" --env PGID="$(id -g)" \
     -- "${IMAGE_NAME}" "$@"
+}
+
+#---  FUNCTION  -------------------------------------------------------------------------------------------------------
+#          NAME:  get_font_info
+#   DESCRIPTION:  Get font information from the given font file and save it into the specified file.
+function get_font_info()
+{
+  local FONT_PATH="${1}"
+  local INFO_OUTPUT_FILE="${2}"
+
+  # Generate a TTX file with font information
+  ttx -q --recalc-timestamp -o "${INFO_OUTPUT_FILE}" "${FONT_PATH}"
+
+  # Remove the following tags from the TTX file:
+  sed -E -i 's/.*<(checkSumAdjustment|modified|FFTimeStamp|sourceModified).*//g' "${INFO_OUTPUT_FILE}"
 }

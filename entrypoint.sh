@@ -64,15 +64,15 @@ if [[ ${#fonts[@]} -eq 0 ]]; then
   exit 1
 fi
 
-touch "${OUTPUT_DIR}/font-patcher-log.txt"
-rm -f "${REPOSITORY_DIR}/font-patcher-log.txt"
-ln -s "${OUTPUT_DIR}/font-patcher-log.txt" "${REPOSITORY_DIR}/font-patcher-log.txt"
-
 # Patch fonts
 for font in "${fonts[@]}"; do
   log_info "Patching font ${CYAN}${font}${RESET} ..."
-  fontforge -script font-patcher -out "${OUTPUT_DIR}/" "${options[@]}" "${font}"
+  fontforge -script "${REPOSITORY_DIR}"/font-patcher -out "${OUTPUT_DIR}/" "${options[@]}" "${font}"
 done
+
+# Save log file
+LOG_FILE="font-patcher-log.txt"
+[[ -f "${LOG_FILE}" ]] && cp -f "${LOG_FILE}" "${OUTPUT_DIR}/"
 
 if [[ -n "${PUID}" ]]; then
   OWNERSHIP="${PUID}"
