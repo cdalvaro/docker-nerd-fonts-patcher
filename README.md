@@ -6,7 +6,7 @@
 [![Architecture AMD64][arch_amd64_badge]][arch_link]
 [![Architecture ARM64][arch_arm64_badge]][arch_link]
 
-# Dockerized Nerd Fonts Patcher v3.1.1
+# Dockerized Nerd Fonts Patcher v3.2.0
 
 Dockerfile to build a Nerd Fonts Patcher image for the Docker opensource container platform.
 
@@ -62,9 +62,9 @@ or from [GitHub Container Registry](https://ghcr.io/cdalvaro/docker-nerd-fonts-p
 docker pull ghcr.io/cdalvaro/docker-nerd-fonts-patcher
 ```
 
-[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v3.1.1-lightgrey.svg
+[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v3.2.0-lightgrey.svg
 
-[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.1.1 "Nerd Fonts Release Notes"
+[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.2.0 "Nerd Fonts Release Notes"
 
 [ubuntu_badge]: https://img.shields.io/badge/ubuntu-jammy--20231004-E95420.svg?logo=Ubuntu
 
