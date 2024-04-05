@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20231004
+FROM ubuntu:jammy-20240227
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -27,7 +27,7 @@ LABEL org.opencontainers.image.vendor="cdalvaro"
 LABEL org.opencontainers.image.created="${BUILD_DATE}"
 LABEL org.opencontainers.image.version="${IMAGE_VERSION}"
 LABEL org.opencontainers.image.revision="${VCS_REF}"
-LABEL org.opencontainers.image.base.name="ubuntu:jammy-20231004"
+LABEL org.opencontainers.image.base.name="ubuntu:jammy-20240227"
 LABEL org.opencontainers.image.licenses="MIT"
 
 # Entrypoint
