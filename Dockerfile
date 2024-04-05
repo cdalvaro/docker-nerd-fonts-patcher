@@ -9,7 +9,8 @@ ENV NERDFONTS_VERSION="v3.2.0" \
 ENV IMAGE_VERSION="${NERDFONTS_VERSION}"
 
 ENV BUILD_DIR="/build" \
-    REPOSITORY_DIR="/nerd-fonts/repo"
+    WORKDIR="/nerd-fonts"
+ENV REPOSITORY_DIR="${WORKDIR}/repo"
 RUN mkdir -p "${REPOSITORY_DIR}"
 
 # Install nerd fonts
@@ -34,5 +35,5 @@ LABEL org.opencontainers.image.licenses="MIT"
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod +x /sbin/entrypoint.sh
 
-WORKDIR ${REPOSITORY_DIR}
+WORKDIR ${WORKDIR}
 ENTRYPOINT ["/sbin/entrypoint.sh"]
