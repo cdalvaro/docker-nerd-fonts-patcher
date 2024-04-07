@@ -24,8 +24,8 @@ function log_error() {
   (>&2 echo -e "${RED}Error${RESET}: $*")
 }
 
-if [[ -z "${REPOSITORY_DIR}" ]]; then
-  log_error "REPOSITORY_DIR environment variable should be set but it is not. Please report this issue at: https://github.com/cdalvaro/docker-nerd-fonts-patcher/issues"
+if [[ -z "${FONTPATCHER_DIR}" ]]; then
+  log_error "FONTPATCHER_DIR environment variable should be set but it is not. Please report this issue at: https://github.com/cdalvaro/docker-nerd-fonts-patcher/issues"
   exit 1
 fi
 
@@ -67,7 +67,7 @@ fi
 # Patch fonts
 for font in "${fonts[@]}"; do
   log_info "Patching font ${CYAN}${font}${RESET} ..."
-  fontforge -script "${REPOSITORY_DIR}"/font-patcher -out "${OUTPUT_DIR}/" "${options[@]}" "${font}"
+  fontforge -script "${FONTPATCHER_DIR}"/font-patcher -out "${OUTPUT_DIR}/" "${options[@]}" "${font}"
 done
 
 # Save log file

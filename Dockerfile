@@ -10,13 +10,14 @@ ENV IMAGE_VERSION="${NERDFONTS_VERSION}"
 
 ENV BUILD_DIR="/build" \
     WORKDIR="/nerd-fonts"
-ENV REPOSITORY_DIR="${WORKDIR}/repo"
-RUN mkdir -p "${REPOSITORY_DIR}"
+
+ENV FONTPATCHER_DIR="${WORKDIR}/repo"
+RUN mkdir -p "${FONTPATCHER_DIR}"
 
 # Install nerd fonts
 COPY assets/build/ ${BUILD_DIR}
 WORKDIR ${BUILD_DIR}
-RUN bash ${BUILD_DIR}/install.sh
+RUN bash ${BUILD_DIR}/install.sh && rm -rf ${BUILD_DIR}
 
 LABEL org.opencontainers.image.title="Dockerized Nerd Fonts Patcher"
 LABEL org.opencontainers.image.description="Nerd Fonts ${NERDFONTS_VERSION} containerized"
