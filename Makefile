@@ -38,8 +38,8 @@ release: build
 patch:
 	$(CONTAINER_ENGINE) run -it --rm \
 		--volume $(shell pwd)/in:/input \
-    --volume $(shell pwd)/out:/output \
+		--volume $(shell pwd)/out:/output \
 		--user $(shell id -u):$(shell id -g) \
 		-- \
-    ghcr.io/cdalvaro/docker-nerd-fonts-patcher:latest \
-		  --quiet --no-progressbars --complete
+		ghcr.io/cdalvaro/docker-nerd-fonts-patcher:latest \
+			--quiet --no-progressbars --complete
