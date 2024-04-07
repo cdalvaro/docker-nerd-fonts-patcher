@@ -35,7 +35,7 @@ install_fontforge "${FONTFORGE_VERSION}" "${FONTFORGE_SHA256}"
 # Download nerd-fonts
 NERDFONTS_URL="https://github.com/ryanoasis/nerd-fonts/archive/refs/tags/${NERDFONTS_VERSION}.tar.gz"
 NERDFONTS_FILE_NAME="nerd-fonts.tar.gz"
-download "${NERDFONTS_URL}" "${NERDFONTS_FILE_NAME}" --progress=bar --show-progress
+download "${NERDFONTS_URL}" "${NERDFONTS_FILE_NAME}"
 check_sha256 "${NERDFONTS_FILE_NAME}" "${NERDFONTS_SHA256}"
 extract "${NERDFONTS_FILE_NAME}" "${FONTPATCHER_DIR}" --exclude='patched-fonts'
 
