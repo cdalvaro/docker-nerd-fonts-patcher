@@ -117,7 +117,9 @@ jobs:
           build-args: |
             VCS_REF=${{ needs.metadata.outputs.vcs_ref }}
             BUILD_DATE=${{ needs.metadata.outputs.created_on }}
-          cache-from: type=local,src=${{ env.CACHE_PATH }}
+          cache-from: |
+            ghcr.io/${{ env.IMAGE_NAME }}:latest
+            type=local,src=${{ env.CACHE_PATH }}
           cache-to: type=local,dest=${{ env.CACHE_PATH }}
           push: true
           tags: ${{ needs.metadata.outputs.tags }}
