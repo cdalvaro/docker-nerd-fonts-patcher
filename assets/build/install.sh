@@ -37,7 +37,7 @@ NERDFONTS_URL="https://github.com/ryanoasis/nerd-fonts/archive/refs/tags/${NERDF
 NERDFONTS_FILE_NAME="nerd-fonts.tar.gz"
 download "${NERDFONTS_URL}" "${NERDFONTS_FILE_NAME}" --progress=bar --show-progress
 check_sha256 "${NERDFONTS_FILE_NAME}" "${NERDFONTS_SHA256}"
-extract "${NERDFONTS_FILE_NAME}" "${REPOSITORY_DIR}" --exclude='patched-fonts'
+extract "${NERDFONTS_FILE_NAME}" "${FONTPATCHER_DIR}" --exclude='patched-fonts'
 
 # Purge build dependencies and cleanup apt
 apt-get purge -y --auto-remove "${BUILD_DEPENDENCIES[@]}"
