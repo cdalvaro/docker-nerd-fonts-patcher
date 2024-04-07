@@ -29,17 +29,17 @@ help:
 	@echo "   3. make patch     - patch monospace fonts inside '$(shell pwd)/in' directory with the complete set of glyphs"
 
 build:
-	$(CONTAINER_ENGINE) build --tag=cdalvaro/docker-nerd-fonts-patcher:latest .
+	$(CONTAINER_ENGINE) build --tag=ghcr.io/cdalvaro/docker-nerd-fonts-patcher:latest .
 
 release: build
-	$(CONTAINER_ENGINE) tag cdalvaro/docker-nerd-fonts-patcher:latest \
-		cdalvaro/docker-nerd-fonts-patcher:$(shell cat VERSION) .
+	$(CONTAINER_ENGINE) tag ghcr.io/cdalvaro/docker-nerd-fonts-patcher:latest \
+		ghcr.io/cdalvaro/docker-nerd-fonts-patcher:$(shell cat VERSION) .
 
 patch:
-	$(CONTAINER_ENGINE) run --rm \
+	$(CONTAINER_ENGINE) run -it --rm \
 		--volume $(shell pwd)/in:/input \
     --volume $(shell pwd)/out:/output \
 		--user $(shell id -u):$(shell id -g) \
 		-- \
-    cdalvaro/docker-nerd-fonts-patcher:latest \
+    ghcr.io/cdalvaro/docker-nerd-fonts-patcher:latest \
 		  --quiet --no-progressbars --complete

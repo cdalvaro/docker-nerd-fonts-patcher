@@ -29,15 +29,17 @@ if [[ -z "${FONTPATCHER_DIR}" ]]; then
   exit 1
 fi
 
+FONTPATCHER_SCRIPT="${FONTPATCHER_DIR}/font-patcher"
+
 # Validate arguments
 options=()
 while [[ $# -gt 0 ]]; do
   param="$1"; shift
   case "${param}" in
     -h|--help)
-    exec fontforge -script font-patcher --help ;;
+    exec fontforge -script "${FONTPATCHER_SCRIPT}" --help ;;
     -v|--version)
-    exec fontforge -script font-patcher --version ;;
+    exec fontforge -script "${FONTPATCHER_SCRIPT}" --version ;;
     -out|--outputdir)
     log_warn "Output directory cannot be modified. Default is: ${CYAN}${OUTPUT_DIR}/${RESET}"
     shift ;;
@@ -67,7 +69,7 @@ fi
 # Patch fonts
 for font in "${fonts[@]}"; do
   log_info "Patching font ${CYAN}${font}${RESET} ..."
-  fontforge -script "${FONTPATCHER_DIR}"/font-patcher -out "${OUTPUT_DIR}/" "${options[@]}" "${font}"
+  fontforge -script "${FONTPATCHER_SCRIPT}" -out "${OUTPUT_DIR}/" "${options[@]}" "${font}"
 done
 
 # Save log file
