@@ -111,7 +111,7 @@ jobs:
           password: ${{ secrets.QUAYIO_PASSWORD }}
 
       - name: Build and publish
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           platforms: ${{ env.PLATFORMS }}
           build-args: |
