@@ -6,7 +6,7 @@
 [![Architecture AMD64][arch_amd64_badge]][arch_link]
 [![Architecture ARM64][arch_arm64_badge]][arch_link]
 
-# Dockerized Nerd Fonts Patcher v3.2.1
+# Dockerized Nerd Fonts Patcher v3.3.0
 
 Dockerfile to build a Nerd Fonts Patcher image for the Docker opensource container platform.
 
@@ -67,32 +67,18 @@ or from [GitHub Container Registry](https://ghcr.io/cdalvaro/docker-nerd-fonts-p
 docker pull ghcr.io/cdalvaro/docker-nerd-fonts-patcher
 ```
 
-[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v3.2.1-lightgrey.svg
-
-[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.2.1 "Nerd Fonts Release Notes"
-
+[nerdfonts_badge]: https://img.shields.io/badge/Nerd%20Fonts-v3.3.0-lightgrey.svg
+[nerdfonts_release_notes]: https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.3.0 "Nerd Fonts Release Notes"
 [ubuntu_badge]: https://img.shields.io/badge/ubuntu-jammy--20240227-E95420.svg?logo=Ubuntu
-
 [ubuntu_hub_docker]: https://hub.docker.com/_/ubuntu/ "Ubuntu Image"
-
 [github_publish_badge]: https://github.com/cdalvaro/docker-nerd-fonts-patcher/actions/workflows/publish.yml/badge.svg
-
 [github_publish_workflow]: https://github.com/cdalvaro/docker-nerd-fonts-patcher/actions/workflows/publish.yml
-
 [docker_size_badge]: https://img.shields.io/docker/image-size/cdalvaro/docker-nerd-fonts-patcher/latest?logo=docker&color=2496ED
-
 [docker_hub_tags]: https://hub.docker.com/repository/docker/cdalvaro/docker-nerd-fonts-patcher/tags
-
 [arch_amd64_badge]: https://img.shields.io/badge/arch-amd64-inactive.svg
-
 [arch_arm64_badge]: https://img.shields.io/badge/arch-arm64-inactive.svg
-
 [arch_link]: https://github.com/users/cdalvaro/packages/container/package/docker-nerd-fonts-patcher
-
-[vorillaz-devicons]:https://vorillaz.github.io/devicons/
-
-[font-awesome]:https://github.com/FortAwesome/Font-Awesome
-
-[octicons]:https://github.com/primer/octicons
-
-[patch-your-own-font]:https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md#option-8-patch-your-own-font
+[vorillaz-devicons]: https://vorillaz.github.io/devicons/
+[font-awesome]: https://github.com/FortAwesome/Font-Awesome
+[octicons]: https://github.com/primer/octicons
+[patch-your-own-font]: https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md#option-8-patch-your-own-font
