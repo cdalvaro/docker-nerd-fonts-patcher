@@ -5,7 +5,10 @@
 set -e
 
 # https://stackoverflow.com/a/4774063/3398062
-SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+SCRIPT_PATH="$(
+  cd -- "$(dirname "$0")" >/dev/null 2>&1
+  pwd -P
+)"
 COMMON_FILE="${SCRIPT_PATH}/lib/common.sh"
 
 # shellcheck source=tests/lib/common.sh
@@ -40,7 +43,7 @@ download "${TEST_FONT_URL}" "${TEST_FONT_FILE_NAME}"
 
 TEST_FONT_DIRECTORY="$(mktemp -d)"
 unzip -q "${TEST_FONT_FILE_NAME}" -d "${TEST_FONT_DIRECTORY}/"
-mv "${TEST_FONT_DIRECTORY}"/fonts/ttf/*.ttf "${INPUT_DIR}/"
+mv "${TEST_FONT_DIRECTORY}"/ttf/*.ttf "${INPUT_DIR}/"
 
 log_info "==> Patching original ${TEST_FONT_NAME} font ..."
 font_patcher --quiet --no-progressbars --complete 2>/dev/null
