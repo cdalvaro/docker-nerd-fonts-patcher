@@ -33,7 +33,7 @@ build:
 
 release: build
 	$(CONTAINER_ENGINE) tag ghcr.io/cdalvaro/docker-nerd-fonts-patcher:latest \
-		ghcr.io/cdalvaro/docker-nerd-fonts-patcher:$(shell cat VERSION) .
+		ghcr.io/cdalvaro/docker-nerd-fonts-patcher:$(shell cat VERSION)
 
 patch:
 	$(CONTAINER_ENGINE) run -it --rm \
