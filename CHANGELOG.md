@@ -1,6 +1,11 @@
 # Changelog
 
-The following list only reflects changes made on this project. Please, refer to the [Nerd Fonts 3.3.0 Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
+The following list only reflects changes made on this project. Please, refer to the [Nerd Fonts 3.4.0 Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
+
+**3.4.0**
+
+- Upgrade Nerd Fonts to `3.4.0`
+- Change Docker base image to `ubuntu:noble-20250415.1`
 
 **3.3.0**
 
