@@ -10,8 +10,8 @@ source "${FUNCTIONS_FILE}"
 
 log_info "Installing required packages and build dependencies ..."
 REQUIRED_PACKAGES=(
-  libpng16-16 zlib1g libtiff5 libjpeg8 libxml2 libspiro1 libgif7 \
-  libiconv-hook1 libfreetype6 libcairo2 libpango1.0-0 libwoff1 \
+  libpng16-16 zlib1g libjpeg8 libxml2 libspiro1 libgif7 \
+  libiconv-hook1 libfreetype6 libcairo2 libwoff1 \
   libuninameslist1 libreadline8 libpython3.10 python3 unifont \
   python3-setuptools python3-dev python3-fonttools fonttools
 )
