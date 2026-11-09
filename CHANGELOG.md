@@ -7,6 +7,7 @@ The following list only reflects changes made on this project. Please, refer to 
 - Upgrade Nerd Fonts to `3.5.1`
 - Improve font comparison in tests
 - Change Docker base image to `ubuntu:resolute-20261024.1`
+- Fix package names for Ubuntu 26.04 and skip fontforge translations (gettext >= 0.22)
 
 **3.4.0**
 

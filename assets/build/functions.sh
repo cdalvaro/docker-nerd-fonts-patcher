@@ -164,6 +164,10 @@ function install_fontforge() {
   check_sha256 "${FILE}" "${SHA256}"
   extract "${FILE}" "${EXTRACT_DIR}"
 
+  # Do not build translations: they are not needed in a headless container, and
+  # gettext >= 0.22 rejects some format strings in fontforge 20230101's fr.po.
+  : > "${EXTRACT_DIR}/po/LINGUAS"
+
   BUILD_OPTS=(
     -DENABLE_GUI=OFF
   )
