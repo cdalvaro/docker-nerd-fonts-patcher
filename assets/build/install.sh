@@ -10,14 +10,14 @@ source "${FUNCTIONS_FILE}"
 
 log_info "Installing required packages and build dependencies ..."
 REQUIRED_PACKAGES=(
-  libpng16-16 zlib1g libjpeg8 libxml2 libspiro1 libgif7 libtiff6 \
-  libiconv-hook1 libfreetype6 libcairo2 libwoff1 libglib2.0-0 \
-  libuninameslist1 libreadline8 libpython3.10 python3 unifont \
+  libpng16-16t64 zlib1g libjpeg8 libxml2-16 libspiro1 libgif7 libtiff6 \
+  libiconv-hook1 libfreetype6 libcairo2 libwoff1 libglib2.0-0t64 \
+  libuninameslist1 libreadline8t64 libpython3.14 python3 unifont \
   python3-setuptools python3-dev python3-fonttools fonttools
 )
 
 BUILD_DEPENDENCIES=(
-  libjpeg-dev libtiff5-dev libpng-dev libfreetype6-dev libgif-dev \
+  libjpeg-dev libtiff5-dev libpng-dev libfreetype-dev libgif-dev \
   libxml2-dev libpango1.0-dev libcairo2-dev libspiro-dev \
   libuninameslist-dev libreadline-dev libwoff-dev ca-certificates \
   ninja-build cmake build-essential openssl wget gettext git \
