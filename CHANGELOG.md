@@ -8,6 +8,7 @@ The following list only reflects changes made on this project. Please, refer to 
 - Improve font comparison in tests
 - Change Docker base image to `ubuntu:resolute-20261024.1`
 - Fix package names for Ubuntu 26.04 and skip fontforge translations (gettext >= 0.22)
+- Build fontforge with `-ffp-contract=off`, so fonts patched on arm64 match the official ones
 
 **3.4.0**
 

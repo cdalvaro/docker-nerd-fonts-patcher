@@ -170,6 +170,13 @@ function install_fontforge() {
 
   BUILD_OPTS=(
     -DENABLE_GUI=OFF
+    # Do not fuse a*b+c into a single FMA instruction. AArch64 has FMA in its
+    # base ISA and GCC contracts by default in GNU C mode, which changes the
+    # last bit of some results and, after rounding coordinates, the outlines of
+    # scaled glyphs. With contraction off, arm64 matches the official fonts,
+    # which are built on x86-64 (no FMA in its base ISA).
+    -DCMAKE_C_FLAGS=-ffp-contract=off
+    -DCMAKE_CXX_FLAGS=-ffp-contract=off
   )
 
   (cd $EXTRACT_DIR && build_and_install "fontforge ${VERSION}" "${BUILD_OPTS[@]}")
