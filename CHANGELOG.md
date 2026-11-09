@@ -1,6 +1,12 @@
 # Changelog
 
-The following list only reflects changes made on this project. Please, refer to the [Nerd Fonts 3.4.0 Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
+The following list only reflects changes made on this project. Please, refer to the [Nerd Fonts 3.5.1 Release Notes](https://www.nerdfonts.com/releases) for the complete list of changes.
+
+**3.5.1**
+
+- Upgrade Nerd Fonts to `3.5.1`
+- Improve font comparison in tests
+- Change Docker base image to `ubuntu:resolute-20261024.1`
 
 **3.4.0**
 
