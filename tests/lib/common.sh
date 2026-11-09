@@ -213,20 +213,23 @@ function font_patcher()
     --volume "${INPUT_DIR}/":/input \
     --volume "${OUTPUT_DIR}/":/output \
     --env PUID="$(id -u)" --env PGID="$(id -g)" \
+    --env SOURCE_DATE_EPOCH \
     -- "${IMAGE_NAME}" "$@"
 }
 
 #---  FUNCTION  -------------------------------------------------------------------------------------------------------
-#          NAME:  get_font_info
-#   DESCRIPTION:  Get font information from the given font file and save it into the specified file.
-function get_font_info()
+#          NAME:  font_build_time
+#   DESCRIPTION:  Print the build time of the given font ('head.modified') as a Unix timestamp.
+#----------------------------------------------------------------------------------------------------------------------
+function font_build_time()
 {
   local FONT_PATH="${1}"
-  local INFO_OUTPUT_FILE="${2}"
 
-  # Generate a TTX file with font information
-  ttx -q --recalc-timestamp -o "${INFO_OUTPUT_FILE}" "${FONT_PATH}"
-
-  # Remove the following tags from the TTX file:
-  sed -E -i 's/.*<(checkSumAdjustment|modified|FFTimeStamp|sourceModified).*//g' "${INFO_OUTPUT_FILE}"
+  # 'head' stores seconds since 1904-01-01; epoch_diff converts them to Unix time
+  python3 -c '
+import sys
+from fontTools.misc.timeTools import epoch_diff
+from fontTools.ttLib import TTFont
+print(TTFont(sys.argv[1])["head"].modified + epoch_diff)
+' "${FONT_PATH}"
 }

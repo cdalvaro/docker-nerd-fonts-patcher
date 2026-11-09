@@ -107,8 +107,8 @@ jobs:
       - name: Docker inspect
         run: docker buildx imagetools inspect ${IMAGE_NAME} | grep '${{ matrix.platform }}'
 
-      - name: Install ttx tool
-        run: sudo apt update -y && sudo apt install -y python3-fonttools fonttools
+      - name: Install fontTools
+        run: sudo apt update -y && sudo apt install -y python3-fonttools
 
       - name: Execute tests
         env:
