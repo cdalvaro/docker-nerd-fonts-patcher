@@ -76,13 +76,21 @@ log_info "Using SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH} from the reference fonts"
 for variant in "${VARIANT_OPTIONS[@]}"; do
   log_info "==> Patching original ${TEST_FONT_NAME} font (variant options: '${variant}') ..."
   # FontForge prints thousands of harmless notices, so the output goes to a log.
-  # Only font-patcher's own warnings are shown, or the end of the log on failure.
+  # Only the progress lines of the entrypoint ("Patching font ...") are shown
+  # live, plus font-patcher's own warnings, or the end of the log on failure.
+  # pipefail makes the subshell fail when font_patcher fails, not only grep.
   PATCH_LOG="patch${variant:+-${variant#--}}.log"
+  VARIANT_START="${SECONDS}"
   # shellcheck disable=SC2086 # An empty variant must expand to no argument at all
-  if ! font_patcher "${COMMON_OPTIONS[@]}" ${variant} >"${PATCH_LOG}" 2>&1; then
+  if ! (
+    set -o pipefail
+    font_patcher "${COMMON_OPTIONS[@]}" ${variant} 2>&1 | tee "${PATCH_LOG}" \
+      | { grep --line-buffered 'Patching font' || true; }
+  ); then
     tail -n 50 "${PATCH_LOG}"
     error "font-patcher failed (variant options: '${variant}')"
   fi
+  log_info "Variant patched in $((SECONDS - VARIANT_START)) s"
   grep -E '^(WARNING|ERROR|CRITICAL):' "${PATCH_LOG}" | sort | uniq -c | while read -r line; do
     log_warn "font-patcher: ${line}"
   done
